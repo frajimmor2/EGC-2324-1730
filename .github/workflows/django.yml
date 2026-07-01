@@ -7,10 +7,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        postgre-v: ['14.9', '15.0']
 
     services:
       postgres:
-        image: postgres:14.9
+        image: postgres:${{ matrix.postgres-v }}
         env:
           POSTGRES_USER: decide
           POSTGRES_PASSWORD: decide
